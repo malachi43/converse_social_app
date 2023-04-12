@@ -6,10 +6,11 @@ export const createPost = async (req, res) => {
     try {
         const { picturePath, userId, description } = req.body
         const user = await User.findById(userId)
+        console.log(`User from backend: `, user)
         const newPost = await Post({
             userId,
             firstName: user.firstName,
-            lastname: user.lastName,
+            lastName: user.lastName,
             location: user.location,
             description,
             userPicturePath: user.picturePath,
@@ -31,6 +32,7 @@ export const createPost = async (req, res) => {
 export const getFeedPosts = async (req, res) => {
     try {
         const posts = await Post.find()
+        console.log(`posts: `, posts)
         res.status(200).json(posts)
     } catch (error) {
         res.status(404).json({ msg: error.message })

@@ -28,7 +28,7 @@ const PostSchema = new mongoose.Schema({
         type: Array,
         default: []
     }
-}, {timeseries: true})
+}, {timestamps: true})
 
 const Post = mongoose.model('Post', PostSchema)
 
