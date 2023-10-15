@@ -35,7 +35,7 @@ app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }))
 app.use(morgan('dev'))
 app.use(bodyParser.json({ extended: true }))
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use("/assets", express.static(path.join(__dirname, 'public/assets')))
+app.use("/assets", express.static(path.join(__dirname, 'public', 'assets')))
 
 
 // FILE-STORAGE
