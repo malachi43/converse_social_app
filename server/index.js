@@ -44,7 +44,7 @@ const storage = multer.diskStorage({
         cb(null, 'public/assets')
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname)
+        cb(null, file.filename)
     }
 })
 
@@ -62,7 +62,7 @@ app.use('/posts', postRoutes)
 
 //MONGOOSE SETUP
 const PORT = process.env.PORT || 6001
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URL_DEV)
     .then(async () => {
         // await User.deleteMany()
         // await Post.deleteMany()
