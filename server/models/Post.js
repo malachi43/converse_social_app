@@ -18,7 +18,7 @@ const PostSchema = new mongoose.Schema({
     picturePath: String,
     userPicturePath: String,
     
-    //When you like a post you add to the map and 
+    //When you like a post, you add to the map and 
     //when you unlike you remove from the map. The value of the map is always true
     likes: {
         type: Map,
