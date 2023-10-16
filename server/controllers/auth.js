@@ -17,6 +17,7 @@ export const register = async (req, res) => {
          password
       } = req.body
 
+      const { filename } = req.file
       const salt = await bcrypt.genSalt()
       const passwordHash = await bcrypt.hash(password, salt)
 
@@ -25,7 +26,7 @@ export const register = async (req, res) => {
          lastName,
          location,
          friends,
-         picturePath,
+         picturePath: filename,
          occupation,
          email,
          password: passwordHash,
@@ -50,8 +51,8 @@ export const login = async (req, res) => {
       if (!isMatch) return res.status(400).json({ msg: `Invalid credentials.` })
 
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET)
-      res.status(200).json({user,token})
+      res.status(200).json({ user, token })
    } catch (error) {
-    res.status(400).json({msg: `Error logging in.`})
+      res.status(400).json({ msg: `Error logging in.` })
    }
 }

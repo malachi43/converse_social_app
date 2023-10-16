@@ -6,7 +6,9 @@ export const createPost = async (req, res) => {
     try {
         const { picturePath, userId, description } = req.body
         const user = await User.findById(userId)
-        console.log(`User from backend: `, user)
+        console.log(`req.body: `, req.body)
+        console.log(`req.file: `, req.file)
+        const { filename } = req.file
         const newPost = await Post({
             userId,
             firstName: user.firstName,
@@ -14,13 +16,13 @@ export const createPost = async (req, res) => {
             location: user.location,
             description,
             userPicturePath: user.picturePath,
-            picturePath,
+            picturePath: filename,
             likes: {},
             comments: []
         })
         await newPost.save()
 
-        const post = await Post.find().sort({createdAt: 1})
+        const post = await Post.find().sort({ createdAt: 1 })
         res.status(201).json(post)
     } catch (error) {
         res.status(409).json({ msg: error.message })
