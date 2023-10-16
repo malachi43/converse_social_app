@@ -13,8 +13,8 @@ export const createPost = async (req, res) => {
             lastName: user.lastName,
             location: user.location,
             description,
-            userPicturePath: filename,
-            picturePath: user.picturePath,
+            userPicturePath: user.picturePath,
+            picturePath: filename,
             likes: {},
             comments: []
         })
