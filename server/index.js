@@ -47,7 +47,6 @@ const storage = multer.diskStorage({
         const { originalname } = file
         let ext = path.extname(originalname)
         let filename = `${Math.floor((Math.random() * Math.pow(2, 32)))}${Date.now()}${ext}`
-        console.log(`in multer: req.file: `,file)
         cb(null, filename)
     }
 })
