@@ -11,7 +11,6 @@ export const register = async (req, res) => {
          lastName,
          location,
          friends,
-         picturePath,
          occupation,
          email,
          password
